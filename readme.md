@@ -1,7 +1,3 @@
-UMeteo 气象数据服务
----
-
-UMeteo 气象数据服务旨在融合多源异构数据，提供统一数据环境。
 
 数据服务采用 Spring Cloud Netflix 技术栈。
 Spring Cloud Netflix 通过自动化配置、Spring 环境绑定及其他 Spring 编程惯例为 Spring Boot 应用提供 Netflix OSS 集成。
