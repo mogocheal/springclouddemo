@@ -1,0 +1,57 @@
+server:
+  port: 9002
+
+management:
+  port: 8029
+  context-path: /admin
+
+eureka:
+  instance:
+    hostname: localhost
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+
+spring:
+  datasource:
+    primary:
+      driverClassName: oracle.jdbc.driver.OracleDriver
+      url: jdbc:oracle:thin:@10.104.224.190:1521:orcl
+      username: hbld1
+      password: hbld
+      max-active: 15
+      max-idle: 15
+      max-wait: 10000
+      min-idle: 5
+      testonconnect: true
+      testwhileidle: true
+      timeBetweenEvictionRunsMillis: 30000
+      initial-size: 5
+      type: org.apache.tomcat.jdbc.pool.DataSource
+    secondary:
+      driverClassName: oracle.jdbc.driver.OracleDriver
+      url: jdbc:oracle:thin:@10.104.236.71:1521:thunder
+      username: thunder
+      password: thunder
+      max-active: 15
+      max-idle: 15
+      max-wait: 10000
+      min-idle: 5
+      testonconnect: true
+      testwhileidle: true
+      timeBetweenEvictionRunsMillis: 30000
+      initial-size: 5
+      type: org.apache.tomcat.jdbc.pool.DataSource
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+#  jta:
+#    bitronix:
+#      connectionfactory:
+#        defer-connection-release: false
+#      datasource:
+#        defer-connection-release: false

@@ -1,0 +1,41 @@
+server:
+  port: 8000
+
+management:
+  port: 8001
+  context-path: /admin
+  security:
+      enabled: false
+
+eureka:
+  instance:
+    hostname: localhost
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+
+zuul:
+  prefix: /api
+  routes:
+    api:
+      path: /
+      url: http://www.baidu.com # TODO 这里替换成接口文档地址
+#    cimiss:
+#      path: /cimiss/**
+#      url: http://10.104.89.55/cimiss-web
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ServerListRefreshInterval: 5000
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+
+jdbc:
+  driverClassName: oracle.jdbc.driver.OracleDriver
+  url: jdbc:oracle:thin:@10.104.236.52:1521:orcl
+  username: hxlc
+  password: hxlc

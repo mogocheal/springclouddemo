@@ -1,0 +1,20 @@
+server:
+  port: 8100
+
+management:
+  port: 8200
+  context-path: /admin
+
+eureka:
+  instance:
+    hostname: localhost
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+
+
+
